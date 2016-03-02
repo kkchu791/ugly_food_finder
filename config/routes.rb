@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :markets
   root 'static_pages#index'
+  resources :markets
 end

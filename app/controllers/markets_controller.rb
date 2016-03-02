@@ -17,14 +17,11 @@ class MarketsController < ApplicationController
 
   def create
     @market = Market.new(market_params)
-    respond_to do |format|
-      if @market.save
-        format.html { redirect_to @market, notice: 'Market was successfully created.' }
-        format.json { render :show, status: :created, location: @market }
-      else
-        format.html { render :new }
-        format.json { render json: @market.errors, status: :unprocessable_entity }
-      end
+    if @market.save
+      flash[:notice] = "Market created!"
+      redirect_to market_path(@market)
+    else
+      render :new
     end
   end
 

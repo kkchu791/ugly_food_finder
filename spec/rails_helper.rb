@@ -4,7 +4,6 @@ SimpleCov.start do
   add_filter "/spec/"
   add_group "Controllers", "/controllers/"
   add_group "Models", "/models/"
-  add_group "Serializers", "/serializers/"
   coverage_dir "public/coverage"
 end
 

@@ -192,7 +192,6 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  coffee-rails (~> 4.1.0)
   coveralls
   database_cleaner
   factory_girl_rails
