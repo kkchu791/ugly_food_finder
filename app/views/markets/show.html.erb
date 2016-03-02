@@ -20,5 +20,14 @@
   <%= @market.delivery %>
 </p>
 
+<p>
+  <strong>Latitude:</strong>
+  <%= @market.latitude %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%= @market.longitude %>
+</p>
+
 <%= link_to 'Edit', edit_market_path(@market) %> |
 <%= link_to 'Back', markets_path %>
