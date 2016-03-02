@@ -15,3 +15,13 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore development & test database.
+/uglyfoodfinder_development
+/uglyfoodfinder_test
+
+# Ignore simplecov generate files
+/public/coverage
+/spec/simplecov
+
+.byebug_history
