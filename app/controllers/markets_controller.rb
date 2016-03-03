@@ -3,6 +3,15 @@ class MarketsController < ApplicationController
 
   def index
     @markets = Market.all
+    @hash = Gmaps4rails.build_markers(@markets) do |market, marker|
+      marker.lat market.latitude
+      marker.lng market.longitude
+      marker.infowindow market.store
+      marker.picture({
+        "width" => 32,
+        "height" => 32})
+      marker.json({ store: market.store})
+    end
   end
 
   def show
@@ -17,34 +26,27 @@ class MarketsController < ApplicationController
 
   def create
     @market = Market.new(market_params)
-    respond_to do |format|
-      if @market.save
-        format.html { redirect_to @market, notice: 'Market was successfully created.' }
-        format.json { render :show, status: :created, location: @market }
-      else
-        format.html { render :new }
-        format.json { render json: @market.errors, status: :unprocessable_entity }
-      end
+    if @market.save
+      flash[:notice] = "Market created!"
+      redirect_to market_path(@market)
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @market.update(market_params)
-        format.html { redirect_to @market, notice: 'Market was successfully updated.' }
-        format.json { render :show, status: :ok, location: @market }
-      else
-        format.html { render :edit }
-        format.json { render json: @market.errors, status: :unprocessable_entity }
-      end
+    if @market.update(market_params)
+      flash[:notice] = "Market created!"
+      redirect_to market_path(@market)
+    else
+      render :edit
     end
   end
 
   def destroy
-    @market.destroy
-    respond_to do |format|
-      format.html { redirect_to markets_url, notice: 'Market was successfully destroyed.' }
-      format.json { head :no_content }
+    if @market.destroy
+      flash[:notice] = "Market destroyed."
+      redirect_to markets_path
     end
   end
 

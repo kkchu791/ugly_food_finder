@@ -1,29 +1,45 @@
+<script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script>
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Markets</h1>
+<h1 class="market-header">Listing Markets</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Store</th>
-      <th>Address</th>
-      <th>Description</th>
-      <th>Delivery</th>
-      <th colspan="3"></th>
+      <th style="padding:0 15px 0 15px;">Store</th>
+      <th style="padding:0 15px 0 15px;">Address</th>
+      <th style="padding:0 15px 0 15px;">Description</th>
+      <th style="padding:0 15px 0 15px;">Delivery</th>
+      <th style="padding:0 15px 0 15px;" colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @markets.each do |market| %>
       <tr>
-        <td><%= market.store %></td>
-        <td><%= market.address %></td>
-        <td><%= market.description %></td>
-        <td><%= market.delivery %></td>
-        <td><%= link_to 'Show', market %></td>
-        <td><%= link_to 'Edit', edit_market_path(market) %></td>
-        <td><%= link_to 'Destroy', market, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="padding:0 15px 0 15px;"><%= market.store %></td>
+        <td style="padding:0 15px 0 15px;"><%= market.address %></td>
+        <td style="padding:0 15px 0 15px;"><%= market.description %></td>
+        <td style="padding:0 15px 0 15px;"><%= market.delivery %></td>
+        <td style="padding:0 15px 0 15px;"><%= link_to 'Show', market %></td>
+        <td style="padding:0 15px 0 15px;"><%= link_to 'Edit', edit_market_path(market) %></td>
+        <td style="padding:0 15px 0 15px;"><%= link_to 'Destroy', market, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: {id: 'custom_style'}, provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+});
+</script>

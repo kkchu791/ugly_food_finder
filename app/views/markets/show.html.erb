@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Store:</strong>
-  <%= @market.store %>
-</p>
+<h1><%= @market.store %></h1>
 
 <p>
   <strong>Address:</strong>
@@ -18,6 +15,15 @@
 <p>
   <strong>Delivery:</strong>
   <%= @market.delivery %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @market.latitude %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%= @market.longitude %>
 </p>
 
 <%= link_to 'Edit', edit_market_path(@market) %> |
