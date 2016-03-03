@@ -48,10 +48,9 @@ class MarketsController < ApplicationController
   end
 
   def destroy
-    if @market.destroy
-      flash[:notice] = "Market destroyed."
-      redirect_to markets_path
-    end
+    @market.destroy
+    flash[:notice] = "Market destroyed."
+    redirect_to markets_path
   end
 
   private
@@ -60,6 +59,6 @@ class MarketsController < ApplicationController
     end
 
     def market_params
-      params.require(:market).permit(:store, :address, :description, :delivery)
+      params.require(:market).permit(:store, :address, :description, :delivery, :picture, :remote_picture_url)
     end
 end
