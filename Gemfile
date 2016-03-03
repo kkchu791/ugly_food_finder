@@ -11,6 +11,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
 gem 'bootstrap-sass'
+gem 'humanize_boolean'
 
 group :development, :test do
   gem 'spring'

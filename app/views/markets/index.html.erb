@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="market-header">Listing Markets</h1>
+<h1 class="market-header">Markets</h1>
 
 <%= render 'search' %>
 
@@ -23,7 +23,7 @@
         <td class="td-padding"><%= market.store %></td>
         <td class="td-padding"><%= market.address %></td>
         <td class="td-padding"><%= market.description %></td>
-        <td class="td-padding"><%= market.delivery %></td>
+        <td class="td-padding"><%= market.delivery.humanize %></td>
         <td class="td-padding"><%= link_to 'Show', market %></td>
         <td class="td-padding"><%= link_to 'Edit', edit_market_path(market) %></td>
         <td class="td-padding"><%= link_to 'Destroy', market_path(market), method: :delete, data: { confirm: 'Are you sure?' } %></td>
