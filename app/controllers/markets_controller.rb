@@ -2,7 +2,11 @@ class MarketsController < ApplicationController
   before_action :set_market, only: [:show, :edit, :update, :destroy]
 
   def index
-    @markets = Market.all
+    if params[:search].present?
+      @markets = Market.near(params[:search], 1000, :order => :address)
+    else
+      @markets = Market.all
+    end
     @hash = Gmaps4rails.build_markers(@markets) do |market, marker|
       marker.lat market.latitude
       marker.lng market.longitude
@@ -44,10 +48,9 @@ class MarketsController < ApplicationController
   end
 
   def destroy
-    if @market.destroy
-      flash[:notice] = "Market destroyed."
-      redirect_to markets_path
-    end
+    @market.destroy
+    flash[:notice] = "Market destroyed."
+    redirect_to markets_path
   end
 
   private
@@ -56,6 +59,6 @@ class MarketsController < ApplicationController
     end
 
     def market_params
-      params.require(:market).permit(:store, :address, :description, :delivery)
+      params.require(:market).permit(:store, :address, :description, :delivery, :picture, :remote_picture_url)
     end
 end

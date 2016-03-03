@@ -46,6 +46,35 @@ describe "markets", type: :request do
     end
   end
 
+  describe 'GET /markets/:id/edit' do
+    it "should render markets edit template" do
+      get "/markets/#{market.id}/edit"
+      expect(response).to have_http_status(200)
+      expect(response).to render_template('edit')
+    end
+  end
+
+  describe 'POST /markets/:id' do
+    before do
+      post '/markets', market: { store: market.store,
+                                address: market.address,
+                                description: market.description,
+                                delivery: market.delivery }
+    end
+
+    it "should update a market" do
+      expect {
+        patch "/markets/#{market.id}", market: { store: "update store",
+                                  address: "San Francisco",
+                                  description: "New Description",
+                                  delivery: false }
+      }.to change(Market, :count).by(0)
+      puts response.header['Location']
+      expect(response).to have_http_status(302)
+      expect(response).to redirect_to(market_url(market))
+    end
+  end
+
   describe 'DELETE' do
     before do
       post '/markets', market: { store: market.store,
