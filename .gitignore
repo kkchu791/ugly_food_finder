@@ -25,3 +25,4 @@
 /spec/simplecov
 
 .byebug_history
+.env
