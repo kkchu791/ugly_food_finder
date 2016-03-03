@@ -69,7 +69,6 @@ describe "markets", type: :request do
                                   description: "New Description",
                                   delivery: false }
       }.to change(Market, :count).by(0)
-      puts response.header['Location']
       expect(response).to have_http_status(302)
       expect(response).to redirect_to(market_url(market))
     end
