@@ -2,54 +2,34 @@
 
 <h1 class="market-header">Listing Markets</h1>
 
-<%= form_tag markets_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-
+<%= render 'search' %>
 
 <table>
   <thead>
     <tr>
-      <th style="padding:0 15px 0 15px;">Image</th>
-      <th style="padding:0 15px 0 15px;">Store</th>
-      <th style="padding:0 15px 0 15px;">Address</th>
-      <th style="padding:0 15px 0 15px;">Description</th>
-      <th style="padding:0 15px 0 15px;">Delivery</th>
-      <th style="padding:0 15px 0 15px;" colspan="3"></th>
+      <th class = "th-padding">Image</th>
+      <th class = "th-padding">Store</th>
+      <th class = "th-padding">Address</th>
+      <th class = "th-padding">Description</th>
+      <th class = "th-padding">Delivery</th>
+      <th class = "th-padding" colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @markets.each do |market| %>
       <tr>
-        <td style="padding:0 15px 0 15px;"><%= image_tag(market.picture_url, :width => 150, :height => 80) %></td>
-        <td style="padding:0 15px 0 15px;"><%= market.store %></td>
-        <td style="padding:0 15px 0 15px;"><%= market.address %></td>
-        <td style="padding:0 15px 0 15px;"><%= market.description %></td>
-        <td style="padding:0 15px 0 15px;"><%= market.delivery %></td>
-        <td style="padding:0 15px 0 15px;"><%= link_to 'Show', market %></td>
-        <td style="padding:0 15px 0 15px;"><%= link_to 'Edit', edit_market_path(market) %></td>
-        <td style="padding:0 15px 0 15px;"><%= link_to 'Destroy', market_path(market), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="td-padding"><%= image_tag(market.picture_url, :width => 150, :height => 80) %></td>
+        <td class="td-padding"><%= market.store %></td>
+        <td class="td-padding"><%= market.address %></td>
+        <td class="td-padding"><%= market.description %></td>
+        <td class="td-padding"><%= market.delivery %></td>
+        <td class="td-padding"><%= link_to 'Show', market %></td>
+        <td class="td-padding"><%= link_to 'Edit', edit_market_path(market) %></td>
+        <td class="td-padding"><%= link_to 'Destroy', market_path(market), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script>
-<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
-
-<div style='width: 800px;'>
-  <div id="map" style='width: 1140px; height: 500px;'></div>
-</div>
-
-<script type="text/javascript">
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'custom_style'}, provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-});
-</script>
+<%= render 'map' %>

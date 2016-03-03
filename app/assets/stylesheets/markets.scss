@@ -1,3 +1,4 @@
 table, td, th { vertical-align: middle; border: solid 2px grey; }
 th { border-bottom: 1px solid #DDD; }
 .market-header { text-align: center; }
+.td-padding, .th-padding { padding:0 15px 0 15px; background-color: rgba(152,251,152, .1);}

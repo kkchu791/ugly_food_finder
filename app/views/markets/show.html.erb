@@ -23,10 +23,12 @@
   <strong>Latitude:</strong>
   <%= @market.latitude %>
 </p>
+
 <p>
   <strong>Longitude:</strong>
   <%= @market.longitude %>
 </p>
+
 <div>
   <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@market.latitude}%2C#{@market.longitude}" %>
 </div>
