@@ -2,6 +2,8 @@
 
 <h1><%= @market.store %></h1>
 
+<p><%= image_tag(@market.picture_url, :width => 600) %></p>
+
 <p>
   <strong>Address:</strong>
   <%= @market.address %>
@@ -21,10 +23,22 @@
   <strong>Latitude:</strong>
   <%= @market.latitude %>
 </p>
+
 <p>
   <strong>Longitude:</strong>
   <%= @market.longitude %>
 </p>
+
+<div>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@market.latitude}%2C#{@market.longitude}" %>
+</div>
+
+<h3>Nearby locations</h3>
+<ul>
+  <% for market in @market.nearbys(1000) %>
+    <li><%= link_to market.address, market %> (<%= market.distance.round(2) %> miles)</li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_market_path(@market) %> |
 <%= link_to 'Back', markets_path %>

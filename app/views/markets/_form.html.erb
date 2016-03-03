@@ -9,9 +9,11 @@
   </div>
   <div class="field">
     <% f.label :latitude %>
+    <% f.text_field :latitude %>
   </div>
   <div class="field">
     <% f.label :longitude %>
+    <% f.text_field :longitude %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -20,6 +22,11 @@
   <div class="field">
     <%= f.label :delivery %><br>
     <%= f.check_box :delivery %>
+  </div>
+  <div class="field">
+    <%= f.file_field :picture %>
+    <%= f.label :remote_picture_url, "or picture URL" %>
+    <%= f.text_field :remote_picture_url %>
   </div>
   <div class="actions">
     <%= f.submit %>
