@@ -2,7 +2,11 @@ class MarketsController < ApplicationController
   before_action :set_market, only: [:show, :edit, :update, :destroy]
 
   def index
-    @markets = Market.all
+    if params[:search].present?
+      @markets = Market.near(params[:search], 1000, :order => :address)
+    else
+      @markets = Market.all
+    end
     @hash = Gmaps4rails.build_markers(@markets) do |market, marker|
       marker.lat market.latitude
       marker.lng market.longitude
