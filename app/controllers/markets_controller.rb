@@ -35,22 +35,18 @@ class MarketsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @market.update(market_params)
-        format.html { redirect_to @market, notice: 'Market was successfully updated.' }
-        format.json { render :show, status: :ok, location: @market }
-      else
-        format.html { render :edit }
-        format.json { render json: @market.errors, status: :unprocessable_entity }
-      end
+    if @market.update(market_params)
+      flash[:notice] = "Market created!"
+      redirect_to market_path(@market)
+    else
+      render :edit
     end
   end
 
   def destroy
-    @market.destroy
-    respond_to do |format|
-      format.html { redirect_to markets_url, notice: 'Market was successfully destroyed.' }
-      format.json { head :no_content }
+    if @market.destroy
+      flash[:notice] = "Market destroyed."
+      redirect_to markets_path
     end
   end
 

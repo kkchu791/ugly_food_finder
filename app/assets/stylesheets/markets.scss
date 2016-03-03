@@ -1,8 +1,3 @@
-// Place all the styles related to the markets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-td {
-  padding:0 15px 0 15px;
-  background: white;
-}
+table, td, th { vertical-align: middle; border: solid 2px grey; }
+th { border-bottom: 1px solid #DDD; }
+.market-header { text-align: center; }
