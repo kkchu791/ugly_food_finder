@@ -12,6 +12,8 @@ gem 'gmaps4rails'
 gem 'carrierwave'
 gem 'bootstrap-sass'
 gem 'humanize_boolean'
+gem "fog-aws"
+gem "figaro"
 
 group :development, :test do
   gem 'spring'
