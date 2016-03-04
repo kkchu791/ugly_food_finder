@@ -36,7 +36,7 @@
 <h3>Nearby locations</h3>
 <ul>
   <% for market in @market.nearbys(1000) %>
-    <li><%= link_to market.address, market %> (<%= market.distance.round(2) %> miles)</li>
+    <li><%= link_to market.address, market %> (<%= market.distance.to_f.round(2) %> miles)</li>
   <% end %>
 </ul>
 
