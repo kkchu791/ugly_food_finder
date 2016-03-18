@@ -6,6 +6,41 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body { padding-top: 60px;}
-.container { font-family: Lato; }
+body {
+  padding-top: 60px;
+}
 
+.container {
+  font-family: Lato;
+}
+
+table, td, th {
+  vertical-align: middle;
+  border: solid 2px grey;
+}
+
+th {
+  border-bottom: 1px solid #DDD;
+}
+
+.market-header {
+  text-align: center;
+}
+
+.td-padding, .th-padding {
+  padding:0 15px 0 15px;
+  background-color: rgba(152,251,152, .1);
+}
+
+#landing-container {
+  text-align: center;
+}
+.title {
+  font-size: 3em;
+}
+
+.button {
+  padding-top: 80px;
+  margin:auto;
+  font-size: 1.5em;
+}
