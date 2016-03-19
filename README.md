@@ -1,3 +1,6 @@
+UglyFoodFinder [![Build Status](https://secure.travis-ci.org/kkchu791/uglyfoodfinder.png)](http://travis-ci.org/kkchu791/uglyfoodfinder)
+
+
 ###UglyFoodFinder:
 UglyFoodFinder helps you find markets that sell misshapen produce. If you know a market that sells 'cosmetically challenged' produce, add it to this app.
 
