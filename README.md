@@ -13,4 +13,4 @@ rails s
 ```
 
 ###Production URL
-https://arcane-brook-99779.herokuapp.com/
+https://uglyfoodfinder.herokuapp.com/
