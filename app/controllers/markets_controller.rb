@@ -1,5 +1,6 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:create, :edit, :update, :destroy]
 
   def index
     if params[:search].present?

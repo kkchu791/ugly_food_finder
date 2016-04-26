@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p class="alert alert-success fade in" data-dismiss="alert" id="notice"><%= notice %></p>
 
 <h1 class="market-header">Markets</h1>
 
@@ -25,8 +25,10 @@
         <td class="td-padding"><%= market.description %></td>
         <td class="td-padding"><%= market.delivery.humanize %></td>
         <td class="td-padding"><%= link_to 'Show', market %></td>
-        <td class="td-padding"><%= link_to 'Edit', edit_market_path(market) %></td>
-        <td class="td-padding"><%= link_to 'Destroy', market_path(market), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user %>
+          <td class="td-padding"><%= link_to 'Edit', edit_market_path(market) %></td>
+          <td class="td-padding"><%= link_to 'Destroy', market_path(market), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
