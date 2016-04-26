@@ -13,6 +13,7 @@ gem 'bootstrap-sass'
 gem 'humanize_boolean'
 gem "fog-aws"
 gem "figaro"
+gem "bcrypt"
 
 group :development, :test do
   gem 'spring'

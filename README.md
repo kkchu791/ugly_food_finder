@@ -1,5 +1,9 @@
 ###UglyFoodFinder:
-UglyFoodFinder helps you find markets that sell misshapen produce. If you know a market that sells 'cosmetically challenged' produce, add it to this app.
+UglyFoodFinder helps you find markets that sell misshapen produce. 
+
+"Between 20 and 30 percent of post-harvest produce is rejected by farmers due to strict aesthetic standards." [http://thinkprogress.org/climate/2016/03/09/3758269/ugly-food-comes-to-whole-foods/]
+
+If you know a market that sells 'cosmetically challenged' produce, add it to this app!
 
 ###To install:
 

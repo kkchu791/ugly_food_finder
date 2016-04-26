@@ -5,7 +5,16 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'New Market', new_market_path %></li>
+          <li><%= link_to 'New Market', new_market_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><%= link_to "Hi, #{current_user.name}", markets_path %></li>
+          <li><%= link_to " Log Out", log_out_path %></li>
+        <% else %>
+          <li><%= link_to " Sign Up", sign_up_path %></li>
+          <li><%= link_to " Log In", log_in_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
